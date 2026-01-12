@@ -9,6 +9,10 @@ grafik çizdiren bir python programı.
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+# ayarlar
+sns.set_theme(style="whitegrid", context="talk")
 
 # geçici veri seti oluşturdum.
 data = {
@@ -17,11 +21,11 @@ data = {
     'Paket': ['FR', 'Style', 'FR', 'Life', 'R-Line', 'Life', 'VZ', 'VXL'],
     'Yil': [2020, 2019, 2021, 2020, 2021, 2019, 2022, 2023],
     'KM': [45000, 60000, 30000, 50000, 25000, 70000, 15000, 5000],
-    'Fiyat': [1150000, 950000, 1300000, 1250000, 1600000, 1050000, 2100000, 2400000],
+    'Fiyat': [1270000, 900000, 1300000, 1300000, 900000, 910000, 210000, 2400000],
     'Hasar_Kaydi': [0, 5000, 0, 0, 0, 12000, 0, 0]
 }
 
-# veriyi tabloya dönüştürmek için pandas
+# 1 - veriyi tabloya dönüştürmek için pandas
 df = pd.DataFrame(data)
 
 print("-"*25 + " TÜM ARAÇ LİSTESİ " + "-"*25)
@@ -33,3 +37,12 @@ marka_ortalamasi = df.groupby('Marka')['Fiyat'].mean().reset_index()
 
 print("--- MARKA BAZLI ORTALAMA FİYATLAR ---")
 print(marka_ortalamasi)
+
+# 3 - Görselleştirme
+print("\nGrafik çiziliyor...")
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Marka', y='Fiyat', data=df, palette='magma')
+plt.title('VAG Grubu Fiyat Ortalamaları')
+plt.xlabel('Marka')
+plt.ylabel('Fiyat (TL)')
+plt.show()
