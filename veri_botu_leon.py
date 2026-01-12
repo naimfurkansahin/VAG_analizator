@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     try:
         # VW GOLF ilanına gidiyoruz
-        url = "https://www.sahibinden.com/volkswagen-golf"
+        url = "https://www.sahibinden.com/seat-leon"
         print(f"Siteye gidiliyor: {url}")
         driver.get(url)
 
@@ -65,18 +65,18 @@ if __name__ == '__main__':
 
                 print(f"Çekildi: {yil} Model - {km} KM - {fiyat} TL")
                 # veriyi listeye ekle (Marka 'VW', Model 'Golf' olarak sabitliyoruz şimdilik)
-                toplanan_veri.append(f"VW,Golf,{baslik},{yil},{km},{fiyat}")
+                toplanan_veri.append(f"Seat,Leon,{baslik},{yil},{km},{fiyat}")
 
             except Exception as e:
                 continue
 
         # dosyaya Kaydet
-        with open("sahibinden_verisi.csv", "w", encoding="utf-8") as f:
+        with open("sahibinden_verisi_leon.csv", "w", encoding="utf-8") as f:
             f.write("Marka,Model,Paket,Yil,KM,Fiyat\n") # Başlıklar
             for satir in toplanan_veri:
                 f.write(satir + "\n")
                 
-        print(f"\nBaşarılı! Toplam {len(toplanan_veri)} ilan 'sahibinden_verisi.csv'ye kaydedildi.")
+        print(f"\nBaşarılı! Toplam {len(toplanan_veri)} ilan 'sahibinden_verisi_leon.csv'ye kaydedildi.")
 
     except Exception as e:
         print("Hata oluştu:", e)
