@@ -10,7 +10,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-#geçici veri seti oluşturdum.
+# geçici veri seti oluşturdum.
 data = {
     'Marka': ['Seat', 'Seat', 'Seat', 'Volkswagen', 'Volkswagen', 'Volkswagen', 'Cupra', 'Cupra'],
     'Model': ['Leon', 'Leon', 'Leon', 'Golf', 'Golf', 'Golf', 'Formentor', 'Formentor'],
@@ -20,3 +20,16 @@ data = {
     'Fiyat': [1150000, 950000, 1300000, 1250000, 1600000, 1050000, 2100000, 2400000],
     'Hasar_Kaydi': [0, 5000, 0, 0, 0, 12000, 0, 0]
 }
+
+# veriyi tabloya dönüştürmek için pandas
+df = pd.DataFrame(data)
+
+print("-"*25 + " TÜM ARAÇ LİSTESİ " + "-"*25)
+print(df)
+print("\n" + "-"*68 + "\n")
+
+# 2 - ANALİZ (hangi aracın ortalaması ne kadardır?)
+marka_ortalamasi = df.groupby('Marka')['Fiyat'].mean().reset_index()
+
+print("--- MARKA BAZLI ORTALAMA FİYATLAR ---")
+print(marka_ortalamasi)
