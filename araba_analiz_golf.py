@@ -9,10 +9,10 @@ sns.set_theme(style="whitegrid", context="talk", font_scale=0.9)
 # veri read
 try:
     # veri_bot un csv sini okuyoruz
-    df = pd.read_csv('sahibinden_verisi.csv')
+    df = pd.read_csv('sahibinden_verisi_golf.csv')
     print(f"Harika! {len(df)} adet araç analiz ediliyor...")
 except FileNotFoundError:
-    print("HATA: 'sahibinden_verisi.csv' bulunamadı! Önce botu çalıştırıp veri çekmelisin.")
+    print("HATA: 'sahibinden_verisi_golf.csv' bulunamadı! Önce botu çalıştırıp veri çekmelisin.")
     exit()
 
 # görselleştirme
